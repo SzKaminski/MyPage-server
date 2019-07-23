@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class Controller {
@@ -24,12 +24,8 @@ public class Controller {
     }
 
     @GetMapping("/getListOfComments")
-    public ArrayList<Comment> getList(){
-        ArrayList<Comment> comments = new ArrayList<>();
-        comments.add(new Comment("Adam", LocalDateTime.of(2018,2,22,3,42), "Good job"));
-        comments.add(new Comment("Sławek", LocalDateTime.of(2018,3,11,13,22), "Best regards from work"));
-
-        return comments;
+    public List<Comment> getList(){
+        return commentService.getComments();
     }
 
     @PostMapping("/postComment")
